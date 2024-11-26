@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+
+<body>
+
+    <h1>Lista de Compras</h1>
+
+    <script>
+        // Array inicial de frutas
+        let frutas = ["Maçã", "Banana", "Laranja", "Uva", "Abacaxi"];
+        let frutasAdicionadas = []; // Array para armazenar as frutas adicionadas
+
+        // Função para exibir a lista de frutas
+        function mostrarLista() {
+            console.log("Lista de frutas:", frutas.join(", "));
+        }
+
+        // Exibe a lista inicial
+        mostrarLista();
+
+        // Loop para interagir com o usuário
+        while (frutas.length > 0) {
+            // Pergunta ao usuário o que deseja fazer
+            let opcao = prompt("Escolha uma opção:\n1. Adicionar fruta\n2. Remover fruta\n3. Ver frutas adicionadas\n4. Sair");
+
+            if (opcao === "1") {
+                // Adicionar uma fruta
+                let frutaAdicionar = prompt("Digite o nome da fruta para adicionar:");
+                frutas.push(frutaAdicionar);
+                frutasAdicionadas.push(frutaAdicionar); // Adiciona à lista de frutas adicionadas
+                console.log("Fruta adicionada:", frutaAdicionar);
+            } else if (opcao === "2") {
+                // Remover uma fruta
+                let frutaRemover = prompt("Digite o nome da fruta para remover:");
+                let indice = frutas.indexOf(frutaRemover);
+
+                if (indice !== -1) {
+                    frutas.splice(indice, 1);
+                    console.log("Fruta removida:", frutaRemover);
+                } else {
+                    console.log("Fruta indisponível no nosso mercado.");
+                }
+            } else if (opcao === "3") {
+                // Mostrar as frutas adicionadas
+                if (frutasAdicionadas.length > 0) {
+                    console.log("Frutas que você adicionou:", frutasAdicionadas.join(", "));
+                } else {
+                    console.log("Você ainda não adicionou frutas.");
+                }
+            } else if (opcao === "4") {
+                // Sair do loop
+                break;
+            } else {
+                console.log("Opção inválida. Tente novamente.");
+            }
+
+            // Exibe a lista de frutas após cada interação
+            mostrarLista();
+        }
+
+        // Quando o array estiver vazio
+        console.log("Lista de compras finalizada.");
+    </script>
+</body>
+</html>
